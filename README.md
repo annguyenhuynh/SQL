@@ -23,3 +23,14 @@ from product p
     - UNBOUNDED FOLLOWING: The very last row of the partition.CURRENT 
     - ROW: The row being currently processed.
     - N PRECEDING / N FOLLOWING: Exactly \(n\) rows before or after the current row
+
+* 🪣 NTile() is a window function that divides an ordered result set into a specified number of roughly equal groups, or buckets
+
+* 🥈cume_dist(): Cumulative Distribution is a window function that calculate the relative position of a value within a sorted groups or rows.
+    
+    * 🟰![alt text](image-1.png)
+
+    * The formula return a decimal values between 0 and 1. 
+
+* percent_rank(): a window function that calculates the relative rank of a row within a result set or partition.
+    * ![alt text](image-2.png)
