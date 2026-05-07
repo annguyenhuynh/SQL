@@ -34,3 +34,11 @@ from product p
 
 * percent_rank(): a window function that calculates the relative rank of a row within a result set or partition.
     * ![alt text](image-2.png)
+
+* 🔁 Recursive queries: A database request that repeately references its own output to process hierarchical or networked data.
+    * These queries are primarily used to navigate structures like:
+        * organization charts 📊
+        * family trees 🌳🌳🌳
+        * file directories 📂
+    
+    * Syntax: ![alt text](image-3.png)
