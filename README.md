@@ -1,4 +1,4 @@
-* 🥇 first_value(): windows function that returned first value from an ordered set of data. It is commonly used to find the earliest, the cheapest, the top record relative to other rows in the set of data
+#### 🥇 first_value(): windows function that returned first value from an ordered set of data. It is commonly used to find the earliest, the cheapest, the top record relative to other rows in the set of data
 
 ```
 FIRST_VALUE(column_name) OVER (
@@ -15,7 +15,7 @@ from product p
 ```
 ![alt text](image.png)
 
-*  Frame clause:
+####  Frame clause:
   * **range|rows|groups between {start_bound} and {end_bound}**
 
   * ⿴ Bounded keywords:
@@ -24,21 +24,33 @@ from product p
     - ROW: The row being currently processed.
     - N PRECEDING / N FOLLOWING: Exactly \(n\) rows before or after the current row
 
-* 🪣 NTile() is a window function that divides an ordered result set into a specified number of roughly equal groups, or buckets
+#### 🪣 NTile() is a window function that divides an ordered result set into a specified number of roughly equal groups, or buckets
 
-* 🥈cume_dist(): Cumulative Distribution is a window function that calculate the relative position of a value within a sorted groups or rows.
+#### 🥈cume_dist(): Cumulative Distribution is a window function that calculate the relative position of a value within a sorted groups or rows.
     
-    * 🟰![alt text](image-1.png)
+* 🟰![alt text](image-1.png)
 
-    * The formula return a decimal values between 0 and 1. 
+* The formula return a decimal values between 0 and 1. 
 
-* percent_rank(): a window function that calculates the relative rank of a row within a result set or partition.
+#### percent_rank(): a window function that calculates the relative rank of a row within a result set or partition.
     * ![alt text](image-2.png)
 
-* 🔁 Recursive queries: A database request that repeately references its own output to process hierarchical or networked data.
-    * These queries are primarily used to navigate structures like:
-        * organization charts 📊
-        * family trees 🌳🌳🌳
-        * file directories 📂
-    
-    * Syntax: ![alt text](image-3.png)
+#### 🔁 Recursive queries: A database request that repeately references its own output to process hierarchical or networked data.
+* These queries are primarily used to navigate structures like:
+    * organization charts 📊
+    * family trees 🌳🌳🌳
+    * file directories 📂
+
+* Syntax: ![alt text](image-3.png)
+
+#### 🪟 Materialized View
+* Better than a regular 'View' in terms of execution speed and storage
+    * Store queries and data so every time a materialized view is executed, it does not start from scratch like the regular view --> fater execution.
+    * By pre-computing the data once (during a refresh), you save the database from repeating expensive calculations every time multiple users access that same data.
+    * Support creating indexes on a materialized views to speed up searching even faster.
+
+    * 🚩 A downside of materialized view is that it does not automatically update the table like a regular view, so we have to do it manually through refresh:
+
+    ```
+        REFRESH MATERIALIZED VIEW <materialized view name>
+    ```
