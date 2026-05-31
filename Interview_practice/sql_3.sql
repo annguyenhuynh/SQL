@@ -35,3 +35,33 @@ from(
 where rnk=1
 
 --Identify days where total spending increased compared to the previous day.
+with day_cost as (
+select 
+	cost,
+	extract (day from usage_date) as day
+from aws_costs
+),
+total_by_day as (
+	select 
+		day,
+		sum(cost) as total_spending,
+		lag(sum(cost)) over (order by day) as next_day_spending
+	from day_cost
+	group by day
+)
+
+select day, total_spending,next_day_spending
+from total_by_day
+where total_spending < next_day_spending
+
+--Find accounts contributing more than 25% of total AWS spend.
+with percentage as (
+select account_id, 
+		sum(cost) * 100 / (select sum(cost) from aws_costs) as pct
+
+from aws_costs
+group by account_id
+)
+
+select * from percentage
+where pct > 25
